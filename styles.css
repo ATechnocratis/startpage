@@ -1,0 +1,173 @@
+:root {
+    --section_padding: 33px;
+    --section_width: 66%;
+    --border_radius: 16px;
+}
+body {
+    margin: 0px;
+    background: rgb(17, 16, 19);
+}
+/*Main grid*/
+
+.section {
+    position: absolute;
+    float: left;
+    width: var(--section_width);
+    margin: 0;
+    overflow: hidden;
+    top: 7%;
+    bottom: 25%;
+    left: calc( ( 100% - var(--section_width)) / 2 - var(--section_padding));
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: auto auto auto;
+    padding: var(--section_padding);
+    border: 1px solid rgba( 0, 0, 0, 0);
+    border-radius: var(--border_radius);
+    box-shadow: 3px 3px 7px 0px black;
+    background: rgba(30, 32, 37, 0.2);
+    text-align: center;
+}
+/*Grid elements*/
+
+.bookmark {
+    display: block;
+    padding: 10%;
+    width: 80%;
+    justify-content: center;
+    border-radius: var(--border_radius);
+    background: rgba(18, 20, 23, 0.997);
+    filter: brightness(0.8);
+    transition: filter 0.5s ease-out;
+    transition: box-shadow 0.1s linear;
+}
+.bookmark img {
+    position: absolute;
+    width: 23%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: saturate(0.2) brightness(0.8);
+    transition: filter 0.5s ease-in;
+    transition: transform 0.2s ease-in;
+}
+/*Hover effects*/
+
+.bookmark:hover {
+    background: radial-gradient( ellipse at center, rgb(30, 26, 34), rgb(27, 24, 30) 100%);
+    background: -moz-radial-gradient(center, ellipse cover, rgb(30, 26, 34), rgb(27, 24, 30) 100%);
+    filter: brightness(1);
+    box-shadow: 1px 1px 0px 1px rgba(3, 3, 3, 0.2);
+}
+.bookmark:hover img {
+    transform: scale(1.15) translate(-45%, -45%);
+    filter: saturate(1.5) brightness(1.3);
+    border: none;
+}
+/*Makes parent element button-like*/
+
+.link {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 2;
+}
+/*Search bar line*/
+
+.search_bar {
+    position: absolute;
+    float: left;
+    padding: 0;
+    height: 8px;
+    width: calc( var(--section_width) + 8%);
+    overflow: hidden;
+    bottom: 8%;
+    left: calc( ( 100% - var(--section_width)) / 2 - 4%);
+    right: 50%;
+    border-radius: 20px;
+    background: radial-gradient(rgba(200, 200, 200, 1),
+    /**/
+    rgba(200, 200, 200, 0.6), rgba(150, 150, 150, 0.3),
+    /**/
+    rgba(150, 150, 150, 0.1), rgba(100, 100, 100, 0.1),
+    /**/
+    rgba(70, 70, 70, 0.1), rgba(70, 70, 70, 0.1),
+    /**/
+    rgba(30, 30, 30, 0.1));
+}
+/*Search bar input*/
+
+.search_input {
+    position: fixed;
+    height: 100vi;
+    width: 54%;
+    bottom: 9%;
+    padding-left: 23%;
+    padding-right: 23%;
+    padding-bottom: 4px;
+    border-color: transparent;
+    border-radius: var(--border_radius);
+    text-align: center;
+    outline: none;
+    font-size: 4vw;
+    color: transparent;
+    filter: brightness(2.5);
+    letter-spacing: 5px;
+    caret-color: rgb(30, 30, 30);
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.1);
+    background: rgba(18, 20, 23, 0.996);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+/*Search Placeholder*/
+
+::-webkit-input-placeholder {
+    color: transparent;
+    text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.2);
+    filter: opacity(1);
+}
+/*Selected text*/
+
+.search_input::selection {
+    color: white;
+    text-shadow: none!important;
+    background: rgb(30, 30, 30, 0.5)
+}
+/*Torch effect*/
+
+.cursor {
+    opacity: 0.8;
+    width: 100vw;
+    height: 130vh;
+    position: relative;
+    background: radial-gradient(rgba(255, 255, 255, 1),
+    /**/
+    rgba(255, 255, 255, 0.3),
+    /**/
+    rgba(200, 200, 200, 0.1),
+    /**/
+    rgba(200, 200, 200, 0.05),
+    /**/
+    rgba(150, 150, 150, 0.0),
+    /**/
+    rgba(100, 100, 100, 0),
+    /**/
+    rgba(70, 70, 70, 0));
+}
+/*Gradient overlay*/
+
+#grad {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    pointer-events: none;
+    filter: saturate(1) brightness(1) blur(1px);
+    background: radial-gradient( rgba(27, 22, 30, 1), rgba(27, 25, 38, 1));
+    background-repeat: no-repeat;
+    z-index: 3;
+}

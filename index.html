@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            New Tab
+        </title>
+        <meta charset="utf-8"/>
+        <link href="styles.css" rel="stylesheet">
+        </link>
+    </head>
+    <body>
+        <div id="grad">
+        </div>
+        <div class="section extra">
+            <div class="cursor" id="div1">
+            </div>
+        </div>
+        <div class="section">
+            <div class="bookmark item_a1">
+                <a class="link" href="https://www.reddit.com/">
+                </a>
+                <img class="link-display-icon fa-reddit-alien" src="src/reddit.png">
+                </img>
+            </div>
+            <div class="bookmark item_a2">
+                <a class="link" href="https://mail.google.com/">
+                </a>
+                <img class="link-display-icon" src="src/gm.png">
+                </img>
+            </div>
+            <div class="bookmark item_a3">
+                <a class="link" href="https://www.youtube.com/">
+                </a>
+                <img class="link-display-icon" src="src/yt.png">
+                </img>
+            </div>
+            <div class="bookmark item_b1">
+                <a class="link" href="https://www.facebook.com/">
+                </a>
+                <img class="link-display-icon" src="src/fb.png">
+                </img>
+            </div>
+            <div class="bookmark item_b2">
+                <a class="link" href="">
+                </a>
+                <img class="link-display-icon" src="src/sm.png">
+                </img>
+            </div>
+            <div class="bookmark item_b3">
+                <a class="link" href="">
+                </a>
+                <img class="link-display-icon" src="src/rb.png">
+                </img>
+            </div>
+            <div class="bookmark item_c1">
+                <a class="link" href="https://www.twitch.tv/">
+                </a>
+                <img class="link-display-icon" src="src/twi.png">
+                </img>
+            </div>
+            <div class="bookmark item_c2">
+                <a class="link" href="">
+                </a>
+                <img class="link-display-icon" src="src/hn.png">
+                </img>
+            </div>
+            <div class="bookmark item_c3">
+                <a class="link" href="">
+                </a>
+                <img class="link-display-icon" src="src/bh.png">
+                </img>
+            </div>
+        </div>
+        <div class="search_bar">
+            <div class="cursor cursor2" id="div2">
+            </div>
+        </div>
+        <form action="https://www.google.com/search?q=" method="get">
+            <input autocomplete="off" autofocus="" class="search_input" name="q" placeholder="Search the Web" type="text">
+            </input>
+        </form>
+    </body>
+</html>
+<script type="text/javascript">
+
+var standardbody=(document.compatMode=="CSS1Compat")? document.documentElement : document.body
+var nav = (!document.all || window.opera);
+var tmr = null;
+var spd = 50;
+var x = 0;
+var y = 0;
+
+var x_offset = window.innerWidth * (-1/1.45);
+var y_offset = window.innerHeight * (-1/1.35);
+
+document.onmousemove = get_mouse; 
+
+function offset_calc(e)
+{    
+ x_offset = window.innerWidth * (-1/1.45);
+ y_offset = window.innerHeight * (-1/1.35);  
+}
+
+window.addEventListener('resize', offset_calc);
+function get_mouse(e)
+{    
+  x = (nav) ? e.pageX : event.clientX+standardbody.scrollLeft;
+  y = (nav) ? e.pageY : event.clientY+standardbody.scrollTop;
+  x += x_offset;
+  y += y_offset;
+  beam(1);     
+}
+
+function beam(n)
+{
+
+  if(n===1)
+  {
+                document.getElementById('div'+n).style.top=y+'px'
+                document.getElementById('div'+n).style.left=x+'px'
+
+                document.getElementById('div'+n).style.visibility='visible'
+    n++;
+    tmr=setTimeout("beam("+n+")",spd);
+  }
+  else if(n===2)
+  {
+                document.getElementById('div'+n).style.top=(y+y_offset)+'px'
+                document.getElementById('div'+n).style.left=(x-30)+'px'
+                document.getElementById('div'+n).style.visibility='visible'
+    n++;
+    tmr=setTimeout("beam("+n+")",spd);
+  }
+  else
+  {
+     clearTimeout(tmr);
+     fade(4);
+  }   
+} 
+
+function fade(n)
+{
+  if(n>0) 
+  {
+                document.getElementById('div'+n).style.visibility='hidden'
+    n--;
+    tmr=setTimeout("fade("+n+")",spd);
+  }
+  else clearTimeout(tmr);
+}
+</script>
