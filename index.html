@@ -85,8 +85,6 @@
 
 var standardbody=(document.compatMode=="CSS1Compat")? document.documentElement : document.body
 var nav = (!document.all || window.opera);
-var tmr = null;
-var spd = 50;
 var x = 0;
 var y = 0;
 
@@ -109,6 +107,7 @@ function get_mouse(e)
   x += x_offset;
   y += y_offset;
   beam(1);     
+  beam(2);     
 }
 
 function beam(n)
@@ -121,31 +120,14 @@ function beam(n)
 
                 document.getElementById('div'+n).style.visibility='visible'
     n++;
-    tmr=setTimeout("beam("+n+")",spd);
   }
   else if(n===2)
   {
                 document.getElementById('div'+n).style.top=(y+y_offset)+'px'
                 document.getElementById('div'+n).style.left=(x-30)+'px'
                 document.getElementById('div'+n).style.visibility='visible'
-    n++;
-    tmr=setTimeout("beam("+n+")",spd);
-  }
-  else
-  {
-     clearTimeout(tmr);
-     fade(4);
-  }   
-} 
 
-function fade(n)
-{
-  if(n>0) 
-  {
-                document.getElementById('div'+n).style.visibility='hidden'
-    n--;
-    tmr=setTimeout("fade("+n+")",spd);
   }
-  else clearTimeout(tmr);
+
 }
 </script>
