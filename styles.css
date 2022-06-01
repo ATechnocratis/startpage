@@ -100,8 +100,7 @@ body {
 /*Search bar input*/
 
 .search_input {
-    position: fixed;
-    height: 100vi;
+    position: absolute;
     width: 54%;
     bottom: 9%;
     padding-left: 23%;
