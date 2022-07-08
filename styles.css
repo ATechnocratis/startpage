@@ -103,8 +103,8 @@ body {
     position: absolute;
     width: 50%;
     bottom: 9%;
-    padding-left: 25%;
-    padding-right: 25%;
+	float: left;
+	left:25%;
     padding-bottom: 4px;
     border-color: transparent;
     border-radius: var(--border_radius);
